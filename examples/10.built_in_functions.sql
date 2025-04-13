@@ -1,0 +1,77 @@
+-- information function
+
+SELECT CONNECTION_ID();
+
+SELECT CURRENT_USER(), CURRENT_USER;
+
+SELECT DATABASE(), SCHEMA();
+
+SELECT USER();
+
+SELECT VERSION();
+
+-- string functions
+
+SELECT CHAR(65, 121);
+
+SELECT LOWER('SQL'), LCASE('SQL');
+SELECT UPPER('sql'), UCASE('sql');
+
+SELECT TRIM('    ALA   '), LENGTH('    ALA   ');
+SELECT TRIM('    ALA   '), LENGTH(TRIM('    ALA   '));
+SELECT RTRIM('    ALA   '), LENGTH(RTRIM('    ALA   '));
+SELECT LTRIM('    ALA   '), LENGTH(LTRIM('    ALA   '));
+
+SELECT 1 - 2;
+SELECT CAST(1 - 2 AS UNSIGNED);
+SELECT CAST(18446744073709551615 AS SIGNED);
+
+SELECT CONVERT('2024-05-08 21:24', DATE) AS Date;
+SELECT CONVERT('24-05-08 21:24', DATE) AS Date;
+SELECT CONVERT('20240508', DATE) AS Date;
+SELECT CONVERT('240508', DATE) AS Date;
+SELECT CONVERT('21:24', TIME) AS Date;
+SELECT CONVERT('210024', TIME) AS Date;
+SELECT CONVERT('2024-05-08 21:24', DATETIME) AS DateTime;
+
+SELECT CONVERT('11.1', DECIMAL(4, 2)) AS Dec1;
+
+-- Misc functions
+
+SELECT RAND();
+SELECT FLOOR(RAND() * 48 + 1);
+
+SELECT NOW();
+SELECT SLEEP(3);
+SELECT NOW();
+
+SELECT UUID();
+
+-- control flow
+SET @Var = 42;
+SELECT CASE @Var
+           WHEN 666 THEN 'Sql'
+           WHEN 42 THEN 'Python'
+           ELSE 'last' END AS result;
+
+
+SET @v1 = 11;
+SET @v2 = 12;
+
+SELECT CASE
+           WHEN (@v1 = 11 AND @v2 = 12) THEN 'Sql'
+           WHEN (@v1 = 11 AND @v2 = 13) THEN 'Python'
+           ELSE 'last' END AS result;
+
+SELECT IF(1 > 2, 'sql', 'python');
+
+SELECT IF(YEAR(NOW()) = 2025, 'Yes', 'No');
+
+SELECT IFNULL(1, 0);
+SELECT IFNULL(NULL, 42);
+
+SELECT 1/0;
+
+SELECT IFNULL(1/0, 'YES');
+SELECT NULLIF(1, 1);
+SELECT NULLIF(5, 1);
